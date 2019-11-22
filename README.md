@@ -8,9 +8,15 @@ Build by hand
 git clone https://github.com/antimodes201/eco-server.git
 docker build -t antimodes201/eco-server:latest .
 ```
+ 
+Docker pull
+```
+docker pull antimodes201/eco-server
+```
+ 
 Docker Run with defaults change the volume options to a directory on your node and maybe use a different name then the one in the example.  
 You can now also set the timezone using -e TZ "Your_TIMEZONE"
-
+ 
 Timezone list can be found at: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 ```
 docker run -it -p 3000-3001:3000-3001/udp -p 3000-3001:3000-3001/tcp -v /app/docker/eco:/eco
