@@ -17,6 +17,6 @@ docker run -it -p 3000-3001:3000-3001/udp -p 3000-3001:3000-3001/tcp -v /app/doc
 	--name eco antimodes201/eco-server:latest
 ```
 Currently exposed environmental variables and their defaul values 
--TZ America/New_York
--GAME_PORT 3000 
--QUERY_PORT 3001
+- TZ America/New_York
+- GAME_PORT 3000 
+- QUERY_PORT 3001
