@@ -1,4 +1,4 @@
-FROM mono:5.20
+FROM mono:6.0
 
 MAINTAINER antimodes201
 
@@ -12,7 +12,7 @@ ENV TZ "America/New_York"
 ENV BRANCH "public"
 ENV INSTANCE_NAME "default"
 ENV GAME_PORT "3000"
-ENV QUERY_PORT "3001"
+ENV WEB_PORT "3001"
 
 # dependencies
 RUN dpkg --add-architecture i386 && \
@@ -49,8 +49,8 @@ RUN cd /steamcmd && \
 ADD start.sh /scripts/start.sh
 
 # Expose some port
-EXPOSE ${GAME_PORT} ${QUERY_PORT}/udp
-EXPOSE ${GAME_PORT} ${QUERY_PORT}/tcp
+EXPOSE ${GAME_PORT} ${WEB_PORT}/udp
+EXPOSE ${GAME_PORT} ${WEB_PORT}/tcp
 
 # Make a volume
 # contains configs and world saves
