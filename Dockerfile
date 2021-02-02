@@ -30,11 +30,9 @@ RUN adduser \
     --shell /bin/bash \
     steamuser && \
     usermod -G tty steamuser \
-        && mkdir -p /steamcmd \
-        && mkdir -p /eco \
+        && mkdir -p /app \
 		&& mkdir -p /scripts \
-        && chown steamuser:steamuser /eco \
-        && chown steamuser:steamuser /steamcmd \
+        && chown steamuser:steamuser /app \
 		&& chown steamuser:steamuser /scripts 
 
 ADD start.sh /scripts/start.sh
