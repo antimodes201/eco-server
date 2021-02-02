@@ -1,11 +1,8 @@
-FROM mono:6.0
-
+FROM ubuntu:18.04
 MAINTAINER antimodes201
 
 # quash warnings
 ARG DEBIAN_FRONTEND=noninteractive
-
-USER root
 
 # Set some Variables
 ENV TZ "America/New_York"
@@ -19,6 +16,8 @@ RUN dpkg --add-architecture i386 && \
         apt-get update && \
         apt-get install -y --no-install-recommends \
 		lib32gcc1 \
+		libgdiplus  \
+		libc6-dev \
 		wget \
 		unzip \
 		tzdata \
@@ -38,25 +37,16 @@ RUN adduser \
         && chown steamuser:steamuser /steamcmd \
 		&& chown steamuser:steamuser /scripts 
 
-# Install Steamcmd
-USER steamuser
-RUN cd /steamcmd && \
-	wget https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz && \
-	tar -xf steamcmd_linux.tar.gz && \
-	rm steamcmd_linux.tar.gz && \
-	/steamcmd/steamcmd.sh +quit
-
 ADD start.sh /scripts/start.sh
 
 # Expose some port
 EXPOSE ${GAME_PORT} ${WEB_PORT}/udp
 EXPOSE ${GAME_PORT} ${WEB_PORT}/tcp
 
+USER steamuser
+
 # Make a volume
 # contains configs and world saves
-VOLUME /eco
-
-# Set Timezone
-
+VOLUME /app
 
 CMD ["/scripts/start.sh"]
