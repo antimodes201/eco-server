@@ -21,7 +21,14 @@ RUN dpkg --add-architecture i386 && \
 		wget \
 		unzip \
 		tzdata \
-		ca-certificates 
+		ca-certificates
+
+# .NET
+RUN wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb && \
+		dpkg -i packages-microsoft-prod.deb && \
+		apt-get install -y --no-install-recommends apt-transport-https && \
+		apt-get update && \
+		apt-get install -y aspnetcore-runtime-5.0
 
 # add steamuser user
 RUN adduser \
