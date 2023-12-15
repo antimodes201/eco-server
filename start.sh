@@ -14,9 +14,9 @@ then
 fi
 
 # fix dotnet ICU
-export DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
+#export DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
 # Update game
-/app/steamcmd/steamcmd.sh +login anonymous +force_install_dir /app +app_update 739590 +quit
+/app/steamcmd/steamcmd.sh +force_install_dir /app +login anonymous +app_update 739590 +quit
 
 # LAUNCH THE GAME!
 cd /app && 
